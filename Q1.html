@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>동아리 축제</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/Q1.css">
+  <script>
+        var sec = 0;
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        document.getElementById("seconds").innerHTML=pad(++sec%60);
+        document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+    }, 1000);
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="timer">
+    <span id="minutes"></span>:<span id="seconds"></span>
+  </div>
+    <div class="Q1">
+      <h2>1. 하이퍼링크를 클릭하면 현재 페이지의 다른부분이나 다른 사이트로 이동한다. (O/X)</h2>
+      <a href="#" class="O">O</a>
+      <a href="index.html" class="X">X</a>
+    </div>
+  </div>
+</body>
+</html>
