@@ -4,8 +4,21 @@
   <meta charset="utf-8">
   <title>실패</title>
   <link rel="stylesheet" href="css/fail.css">
+  <script>
+window.onload = function () {
+  var restart = document.getElementById('restart');
+  var Interval ;
+  
+  restart.onclick = function() {
+    clearInterval(Interval);
+    document.location.href = 'index.html';
+  }
+}
+
+  </script>
 </head>
   <div class="container">
     <h1>실패</h1>
+    <input type="button" value="다시하기" id='restart'>
   </div>
 </html>
