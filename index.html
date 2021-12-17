@@ -1,15 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>보이드스트링 스피드 퀴즈</title>
-  <link rel="stylesheet" href="css/index.css">
+  <title>동아리 축제</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/Q1.css">
+  <script>
+    // var sec = 0;
+    // function pad ( val ) { return val > 9 ? val : "0" + val; }
+    // setInterval( function(){
+    // document.getElementById("seconds").innerHTML=pad(++sec%60);
+    // document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+    // }, 1000);
+    window.onload = function () {
+  
+  var seconds = 00; 
+  var tens = 00; 
+  var appendTens = document.getElementById("tens")
+  var appendSeconds = document.getElementById("seconds")
+  var buttonStart = document.getElementById('button-start');
+  var buttonStop = document.getElementById('button-stop');
+  var buttonReset = document.getElementById('button-reset');
+  var Interval ;
+
+  buttonStart.onclick = function() {
+    
+    clearInterval(Interval);
+    Interval = setInterval(startTimer, 10);
+    document.querySelector('.title').style.display = 'none';
+    document.querySelector('.timer').style.display = 'block';
+    document.querySelector('.Q1').style.display = 'block';
+  }
+  
+    buttonStop.onclick = function() {
+    clearInterval(Interval);
+    document.querySelector('.Q7>input').style.color = 'red';
+    document.querySelector('#success').style.display = 'block';
+    document.querySelector('.Q').style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+  
+
+  buttonReset.onclick = function() {
+    clearInterval(Interval);
+    tens = "00";
+    seconds = "00";
+    appendTens.innerHTML = tens;
+    appendSeconds.innerHTML = seconds;
+  }
+  
+
+  
+  function startTimer () {
+    tens++; 
+    
+    if(tens <= 9){
+      appendTens.innerHTML = "0" + tens;
+    }
+    
+    if (tens > 9){
+      appendTens.innerHTML = tens;
+      
+    } 
+    
+    if (tens > 99) {
+      console.log("seconds");
+      seconds++;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 0;
+      appendTens.innerHTML = "0" + 0;
+    }
+    
+    if (seconds > 9){
+      appendSeconds.innerHTML = seconds;
+    }
+  
+  }
+  
+
+}
+  </script>
 </head>
 <body>
   <div class="container">
-    <div class="main-title">
+    <div class="timer">
+      <!-- <span id="minutes"></span>:<span id="seconds"></span> -->
+      <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+    <!-- <button id="button-stop">Stop</button> -->
+    <!-- <button id="button-reset">Reset</button>/ -->
+    </div>
+    <div class="title">
       <h1>Voidstring Speed Quiz</h1><br>
       <p>Welcome to VS Speed Quiz</p><br><br>
-      <input type="button" value="START">      
+      <input type="button" value="START" id="button-start" class="startbutton">
+    </div>
+    <div class="Q">
+      <div class="Q1">
+        <h2>1. 하이퍼링크를 클릭하면 현재 페이지의 다른부분이나 다른 사이트로 이동한다. (O/X)</h2><br>
+        <input type="button" value="O" onclick="document.querySelector('.Q2').style.display = 'block';  document.querySelector('.Q1>input').style.color = 'red';">
+        <input type="button" value="X" onclick="document.location.href = 'fail.html';">
+      </div>
+      <div class="Q2">
+        <h2>2. html은 웹사이트를 만드는 기본적인 웹 언어이다.(O/X)</h2><br>
+        <input type="button" value="O" onclick="document.querySelector('.Q3').style.display = 'block'; document.querySelector('.Q2>input').style.color = 'red'; ">
+        <input type="button" value="X" onclick="document.location.href = 'fail.html';">
+      </div>
+      <div class="Q3">
+        <h2>3. html과 css는 모바일에서 구동이 불가하다.(O/X)</h2><br>
+        <input type="button" value="O" onclick="document.location.href = 'fail.html';">
+        <input type="button" value="X" onclick="document.querySelector('.Q4').style.display = 'block'; document.querySelector('.Q3>.input').style.color = 'red';" class="input">
+      </div>
+      <div class="Q4">
+        <h2>4. css는 html의 하위호환이다.</h2><br>
+        <input type="button" value="O" onclick="document.location.href = 'fail.html';">
+        <input type="button" value="X" onclick="
+        document.querySelector('.Q5').style.display = 'block';
+        document.querySelector('.Q4>.input').style.color = 'red';"
+        class="input">
+      </div>
+      <div class="Q5">
+        <h2>5. css는 html을 구체화시켜주는 언어이다.</h2><br>
+        <input type="button" value="O" onclick="
+        document.querySelector('.Q6').style.display = 'block';
+        document.querySelector('.Q5>.input').style.color = 'red';"
+        class="input">
+        <input type="button" value="X" onclick="document.location.href = 'fail.html';">
+      </div>
+      <div class="Q6">
+        <h2>6. css로 유튜브 페이지를 만들수있다.</h2><br>
+        <input type="button" value="O" onclick="document.location.href = 'fail.html';">
+        <input type="button" value="X" class="input" onclick="
+        document.querySelector('.Q7').style.display = 'block';
+        document.querySelector('.Q6>.input').style.color = 'red';">
+      </div>
+      <div class="Q7">
+        <h2>7. 아래 사진의 사용처는 css가 아니다.</h2><br>
+        <img src="img/cssbox.png" alt="cssbox"><br><br>
+        <input type="button" value="O" id="button-stop">
+        <input type="button" value="X">
+      </div>
+    </div>
+    <div id="success">
+      <h1>성공</h1>
     </div>
   </div>
 </body>
